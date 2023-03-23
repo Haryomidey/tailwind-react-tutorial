@@ -1,8 +1,15 @@
+import { useState } from 'react';
 import RecipeOne  from './img/image-1.jfif';
 import RecipeTwo  from './img/image-2.jfif';
 import RecipeThree  from './img/image-3.jfif';
 
 function App() {
+
+  const [navMenu, setNavMenu] = useState(false);
+
+  const handleNavMenu = () => {
+    setNavMenu(!navMenu);
+  }
 
   return (
     <div className="App text-gray-600 font-body">
@@ -10,12 +17,17 @@ function App() {
         {/* Content wrapper */}
         <div className='md:col-span-1 md:flex md:justify-end'>
           <nav className='text-right'>
-            <div>
+            <div className='flex justify-between items-center'>
               <h1 className='font-bold uppercase p-4 border-b border-gray-100'>
                 <a href="/" className='hover:text-gray-700'>Food Ninja</a>
               </h1>
+              <div className='px-4 cursor-pointer md:hidden' onClick={handleNavMenu}>
+                <svg className = "w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+                </svg>
               </div>
-              <ul className='text-sm mt-6'>
+              </div>
+              <ul className={navMenu ? 'text-sm mt-6 md:block' : 'text-sm mt-6 hidden md:block'}>
                 <li class = "text-gray-700 font-bold py-1">
                   <a href="#" className='px-4 flex justify-end border-r-4 border-primary'>
                   <span>Home</span>
@@ -25,7 +37,7 @@ function App() {
                   </a>
                 </li>
                 <li className='py-1'>
-                  <a href="#" className='px-4 flex justify-end'>
+                  <a href="#" className='px-4 flex justify-end border-r-4 border-white'>
                   <span>About</span>
                   <svg className='w-5 ml-2' fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"></path>
@@ -33,7 +45,7 @@ function App() {
                   </a>
                 </li>
                 <li className='py-1'>
-                <a href="#" className='px-4 flex justify-end'>
+                <a href="#" className='px-4 flex justify-end border-r-4 border-white'>
                   <span>Contact</span>
                   <svg className='w-5 ml-2' fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"></path>
@@ -46,8 +58,8 @@ function App() {
           {/* <!-- End Nav --> */}
         <main className='px-16 py-6 bg-gray-100 md:col-span-2'>
           <div className='flex justify-center md:justify-end'>
-            <a href="#" className='btn text-primary border-primary md:border-2 hover:bg-primary hover:text-white'>Login</a>
-            <a href="#" className='btn text-primary ml-2 border-primary md:border-2 hover:bg-primary hover:text-white'>Sign Up</a>
+            <a href="#" className='btn text-primary border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500'>Login</a>
+            <a href="#" className='btn text-primary ml-2 border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500'>Sign Up</a>
           </div>
           <header>
             <h2 className='text-gray-700 text-6xl font-semibold'>Recipes</h2>
@@ -102,7 +114,7 @@ function App() {
               {/* <!-- Cards go here --> */}
             </div>
             <div className = "flex justify-center">
-              <div className='btn bg-secondary-100 text-secondary-200 hover:shadow-inner'>Load more</div>
+              <div className='btn bg-secondary-100 text-secondary-200 hover:shadow-inner transform hover:scale-125 hover:bg-opacity-50 transition ease-out duration-300'>Load more</div>
             </div>
           </div>
         </main>
